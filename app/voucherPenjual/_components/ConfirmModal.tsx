@@ -27,7 +27,7 @@ export default function ConfirmModal({ children }: ConfirmModalProps) {
           Data voucher tidak akan tersimpan sebelum kamu klik Simpan
         </p>
         <DialogFooter className="flex gap-x-2 w-full">
-          <DialogClose className="w-full">
+          <DialogClose className="w-full" asChild>
             <Button
               className="bg-white text-blue-500 w-full border-blue-500 border hover:bg-slate-200 rounded-full "
               asChild
@@ -35,7 +35,7 @@ export default function ConfirmModal({ children }: ConfirmModalProps) {
               <Link href="/">Ya keluar</Link>
             </Button>
           </DialogClose>
-          <DialogClose className="w-full">
+          <DialogClose className="w-full" asChild>
             <Button className="rounded-xl bg-blue-500 text-white w-full hover:bg-blue-700">
               Batal
             </Button>
