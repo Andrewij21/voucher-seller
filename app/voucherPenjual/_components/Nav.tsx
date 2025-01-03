@@ -4,6 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ConfirmModal from "./ConfirmModal";
 
 export default function Nav() {
   const pathName = usePathname();
@@ -11,9 +12,9 @@ export default function Nav() {
   return (
     <nav className=" py-2 px-4 bg-red-600 text-white">
       <div className="flex gap-x-2">
-        <Link href="/">
+        <ConfirmModal>
           <ChevronLeft className="h-8 w-8 bg-white text-red-700 rounded-full" />
-        </Link>
+        </ConfirmModal>
         <h1 className="font-bold capitalize text-2xl mb-4">Voucher penjual</h1>
       </div>
       <div className="flex justify-evenly items-center gap-x-2">
