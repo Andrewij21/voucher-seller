@@ -7,6 +7,7 @@ import { dummyVouchers } from "@/app/_Data";
 import DrawerMenu from "../_components/DrawerMenu";
 import { SearchX } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Nav from "../_components/Nav";
 
 export default function Page() {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -50,36 +51,38 @@ export default function Page() {
     });
   };
   return (
-    <div className="py-4 space-y-4 z-10">
-      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <div>
-        <DrawerMenu
-          initialFilter={filterCriteria}
-          onSaveFilter={(newFilter) => setFilterCriteria(newFilter)}
-        />
-      </div>
-      <div className="min-h-[600px] bg-gray-100 flex flex-col">
-        {filteredVouchers.length > 0 ? (
-          <VoucherCardLists vouchers={filteredVouchers} />
-        ) : (
-          <div className="text-center min-h-screen flex flex-col items-center justify-center">
-            <SearchX className="h-12 w-12" />
-            <h3 className="font-semibold capitalize text-muted-foreground">
-              Data tidak Ditemukan. Mohon coba hapus beberapa filter.
-            </h3>
-            <h3 className="font-semibold capitalize text-muted-foreground">
-              atau
-            </h3>
-            <Button
-              onClick={resetFilter}
-              className="bg-blue-500 text-white capitalize font-semibold rounded-full hover:bg-blue-600"
-            >
-              Atur ulang filter
-            </Button>
-          </div>
-        )}
+    <>
+      <Nav />
+      <div className="py-4 space-y-4 z-10 px-2">
+        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <div>
+          <DrawerMenu
+            initialFilter={filterCriteria}
+            onSaveFilter={(newFilter) => setFilterCriteria(newFilter)}
+          />
+        </div>
+        <div className="min-h-[600px] bg-gray-100 flex flex-col">
+          {filteredVouchers.length > 0 ? (
+            <VoucherCardLists vouchers={filteredVouchers} />
+          ) : (
+            <div className="text-center min-h-screen flex flex-col items-center justify-center">
+              <SearchX className="h-12 w-12" />
+              <h3 className="font-semibold capitalize text-muted-foreground">
+                Data tidak Ditemukan. Mohon coba hapus beberapa filter.
+              </h3>
+              <h3 className="font-semibold capitalize text-muted-foreground">
+                atau
+              </h3>
+              <Button
+                onClick={resetFilter}
+                className="bg-blue-500 text-white capitalize font-semibold rounded-full hover:bg-blue-600"
+              >
+                Atur ulang filter
+              </Button>
+            </div>
+          )}
 
-        {/* <div className="text-center">
+          {/* <div className="text-center">
           <FolderX className="w-28 h-28 mx-auto" />
           <h3 className="font-semibold capitalize text-muted-foreground">
             Belum ada voucher yang aktif
@@ -88,7 +91,8 @@ export default function Page() {
             Buat voucher sekarang!
           </p>
         </div> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
