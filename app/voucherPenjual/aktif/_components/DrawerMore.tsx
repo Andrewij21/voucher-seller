@@ -11,9 +11,11 @@ import { Separator } from "@/components/ui/separator";
 import { EllipsisVertical, X } from "lucide-react";
 import ConfirmModal from "../../_components/ConfirmModal";
 import { useState } from "react";
+import DrawerMenuUbahKuota from "../../_components/DrawerMenuUbahKuota";
 
 export default function DrawerMore() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalAkhiriOpen, setIsModalAkhiriOpen] = useState(false);
+  const [isModalKuotaOpen, setIsModalKuotaOpen] = useState(false);
   return (
     <>
       <Drawer>
@@ -35,8 +37,17 @@ export default function DrawerMore() {
               <Separator className="" />
             </div>
             <div>
-              <h3 className="capitalize font-semibold">Ubah Kuota</h3>
-              <Separator className="" />
+              <DrawerClose>
+                <h3
+                  className="capitalize font-semibold"
+                  onClick={() => {
+                    setIsModalKuotaOpen(true); // Membuka modal
+                  }}
+                >
+                  Ubah Kuota
+                </h3>
+                <Separator className="" />
+              </DrawerClose>
             </div>
             <div>
               <h3 className="capitalize font-semibold">Salin</h3>
@@ -47,7 +58,7 @@ export default function DrawerMore() {
                 <h3
                   className="capitalize font-semibold"
                   onClick={() => {
-                    setIsModalOpen(true); // Membuka modal
+                    setIsModalAkhiriOpen(true); // Membuka modal
                   }}
                 >
                   Akhiri
@@ -58,7 +69,14 @@ export default function DrawerMore() {
           </div>
         </DrawerContent>
       </Drawer>
-      <ConfirmModal open={isModalOpen} onOpenChange={setIsModalOpen} />
+      <DrawerMenuUbahKuota
+        open={isModalKuotaOpen}
+        onOpenChange={setIsModalKuotaOpen}
+      />
+      <ConfirmModal
+        open={isModalAkhiriOpen}
+        onOpenChange={setIsModalAkhiriOpen}
+      />
     </>
   );
 }

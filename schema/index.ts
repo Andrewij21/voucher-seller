@@ -1,5 +1,17 @@
 import * as z from "zod";
 
+export const UbahKuotaVoucherSchema = z.object({
+  kuota: z
+    .string()
+    .nonempty({ message: "kuota pemakaian wajib diisi" })
+    .regex(/^\d+$/, {
+      message: "kuota pemakaian pembelian hanya boleh angka",
+    })
+    .refine((val) => parseInt(val, 10) > 0, {
+      message: "Kuota pemakaian minimal adalah 1",
+    }),
+});
+
 export const CreateVoucherSchema = z.object({
   step1: z.object({
     nama: z
