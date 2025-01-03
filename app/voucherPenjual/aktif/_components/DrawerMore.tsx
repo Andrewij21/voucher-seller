@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/drawer";
 import { Separator } from "@/components/ui/separator";
 import { EllipsisVertical, X } from "lucide-react";
+import ConfirmModal from "../../_components/ConfirmModal";
 
 export default function DrawerMore() {
   return (
@@ -38,7 +39,9 @@ export default function DrawerMore() {
             <Separator className="" />
           </div>
           <div>
-            <h3 className="capitalize font-semibold">Akhiri</h3>
+            <ConfirmModal>
+              <h3 className="capitalize font-semibold">Akhiri</h3>
+            </ConfirmModal>
             <Separator className="" />
           </div>
         </div>
