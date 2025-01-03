@@ -12,6 +12,7 @@ import { EllipsisVertical, X } from "lucide-react";
 import ConfirmModal from "../../_components/ConfirmModal";
 import { useState } from "react";
 import DrawerMenuUbahKuota from "../../_components/DrawerMenuUbahKuota";
+import Link from "next/link";
 
 export default function DrawerMore() {
   const [isModalAkhiriOpen, setIsModalAkhiriOpen] = useState(false);
@@ -33,7 +34,11 @@ export default function DrawerMore() {
           </DrawerHeader>
           <div className="p-4 space-y-4">
             <div>
-              <h3 className="capitalize font-semibold">Detail</h3>
+              <DrawerClose asChild>
+                <Link href="/voucherPenjual/detail">
+                  <h3 className="capitalize font-semibold">Detail</h3>
+                </Link>
+              </DrawerClose>
               <Separator className="" />
             </div>
             <div>
