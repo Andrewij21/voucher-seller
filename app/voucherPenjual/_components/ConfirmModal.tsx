@@ -8,16 +8,16 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
-import { ReactNode } from "react";
 import { Check, X } from "lucide-react";
-
 interface ConfirmModalProps {
-  children: ReactNode; // Menggunakan ReactNode untuk tipe children
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
-
-export default function ConfirmModal({ children }: ConfirmModalProps) {
+export default function ConfirmModal({
+  open,
+  onOpenChange,
+}: ConfirmModalProps) {
   const submitHandler = () => {
     return toast("Berhasil Mengakhiri Voucher", {
       position: "bottom-center",
@@ -33,8 +33,7 @@ export default function ConfirmModal({ children }: ConfirmModalProps) {
     });
   };
   return (
-    <Dialog>
-      <DialogTrigger>{children}</DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader className="items-center">
           <DialogTitle>Akhiri Voucher</DialogTitle>
