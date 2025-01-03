@@ -1,7 +1,7 @@
 import { Separator } from "@radix-ui/react-separator";
 import { ChevronLeft } from "lucide-react";
 import StepIndicator from "./StepperIndicator";
-import ConfirmModal from "@/app/voucherPenjual/_components/ConfirmModal";
+import ConfirmModal from "./ConfirmModal";
 
 interface NavProps {
   step: number;
