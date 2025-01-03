@@ -11,7 +11,9 @@ export default function Nav() {
   return (
     <nav className=" py-2 px-4 bg-red-600 text-white">
       <div className="flex gap-x-2">
-        <ChevronLeft className="h-8 w-8 bg-white text-red-700 rounded-full" />
+        <Link href="/">
+          <ChevronLeft className="h-8 w-8 bg-white text-red-700 rounded-full" />
+        </Link>
         <h1 className="font-bold capitalize text-2xl mb-4">Voucher penjual</h1>
       </div>
       <div className="flex justify-evenly items-center gap-x-2">

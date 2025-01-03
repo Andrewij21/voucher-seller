@@ -13,15 +13,27 @@ import {
 } from "@/components/ui/drawer";
 import { Separator } from "@/components/ui/separator";
 import { SlidersHorizontal } from "lucide-react";
+interface DrawerMenuProps {
+  initialFilter: {
+    status: string;
+    jenisVoucher: string;
+    targetVoucher: string;
+    produk: string;
+  };
+  onSaveFilter: (filter: {
+    status: string;
+    jenisVoucher: string;
+    targetVoucher: string;
+    produk: string;
+  }) => void;
+}
 
-export default function DrawerMenu() {
+export default function DrawerMenu({
+  initialFilter,
+  onSaveFilter,
+}: DrawerMenuProps) {
   // State untuk menyimpan pilihan
-  const [selected, setSelected] = useState({
-    status: "Aktif",
-    jenisVoucher: "diskon",
-    targetVoucher: "publik",
-    produk: "semua produk",
-  });
+  const [selected, setSelected] = useState(initialFilter);
 
   // Fungsi untuk menangani perubahan pilihan
   const handleSelect = (category: string, value: string) => {
@@ -29,6 +41,9 @@ export default function DrawerMenu() {
       ...prev,
       [category]: value,
     }));
+  };
+  const handleSave = () => {
+    onSaveFilter(selected); // Kirim filter ke parent
   };
 
   return (
@@ -38,26 +53,27 @@ export default function DrawerMenu() {
           Filters <SlidersHorizontal />
         </Button>
       </DrawerTrigger>
-      <DrawerContent
-        aria-hidden="false"
-        className="max-w-screen-sm mx-auto min-h-[500px]"
-      >
+      <DrawerContent className="max-w-screen-sm mx-auto min-h-[500px]">
         <DrawerHeader className="space-y-4">
           {/* Status */}
           <div className="space-y-2 text-left">
             <DrawerTitle>Status</DrawerTitle>
             <div className="flex gap-x-2">
               <Button
-                variant={selected.status === "Aktif" ? "default" : "secondary"}
-                onClick={() => handleSelect("status", "Aktif")}
+                variant={
+                  selected.status === "aktif" ? "type1" : "secondaryRounded"
+                }
+                onClick={() => handleSelect("status", "aktif")}
               >
                 Aktif
               </Button>
               <Button
                 variant={
-                  selected.status === "Akan Datang" ? "default" : "secondary"
+                  selected.status === "akan datang"
+                    ? "type1"
+                    : "secondaryRounded"
                 }
-                onClick={() => handleSelect("status", "Akan Datang")}
+                onClick={() => handleSelect("status", "akan datang")}
               >
                 Akan Datang
               </Button>
@@ -71,7 +87,9 @@ export default function DrawerMenu() {
             <div className="flex gap-x-2">
               <Button
                 variant={
-                  selected.jenisVoucher === "diskon" ? "default" : "secondary"
+                  selected.jenisVoucher === "diskon"
+                    ? "type1"
+                    : "secondaryRounded"
                 }
                 onClick={() => handleSelect("jenisVoucher", "diskon")}
               >
@@ -80,8 +98,8 @@ export default function DrawerMenu() {
               <Button
                 variant={
                   selected.jenisVoucher === "biaya pengiriman"
-                    ? "default"
-                    : "secondary"
+                    ? "type1"
+                    : "secondaryRounded"
                 }
                 onClick={() => handleSelect("jenisVoucher", "biaya pengiriman")}
               >
@@ -97,19 +115,21 @@ export default function DrawerMenu() {
             <div className="flex gap-x-2">
               <Button
                 variant={
-                  selected.targetVoucher === "publik" ? "default" : "secondary"
+                  selected.targetVoucher === "Publik"
+                    ? "type1"
+                    : "secondaryRounded"
                 }
-                onClick={() => handleSelect("targetVoucher", "publik")}
+                onClick={() => handleSelect("targetVoucher", "Publik")}
               >
                 Publik
               </Button>
               <Button
                 variant={
-                  selected.targetVoucher === "terbatas"
-                    ? "default"
-                    : "secondary"
+                  selected.targetVoucher === "Terbatas"
+                    ? "type1"
+                    : "secondaryRounded"
                 }
-                onClick={() => handleSelect("targetVoucher", "terbatas")}
+                onClick={() => handleSelect("targetVoucher", "Terbatas")}
               >
                 Terbatas
               </Button>
@@ -123,19 +143,21 @@ export default function DrawerMenu() {
             <div className="flex gap-x-2">
               <Button
                 variant={
-                  selected.produk === "semua produk" ? "default" : "secondary"
+                  selected.produk === "Semua Produk"
+                    ? "type1"
+                    : "secondaryRounded"
                 }
-                onClick={() => handleSelect("produk", "semua produk")}
+                onClick={() => handleSelect("produk", "Semua Produk")}
               >
                 Semua Produk
               </Button>
               <Button
                 variant={
-                  selected.produk === "produk tertentu"
-                    ? "default"
-                    : "secondary"
+                  selected.produk === "Produk Tertentu"
+                    ? "type1"
+                    : "secondaryRounded"
                 }
-                onClick={() => handleSelect("produk", "produk tertentu")}
+                onClick={() => handleSelect("produk", "Produk Tertentu")}
               >
                 Produk Tertentu
               </Button>
@@ -153,9 +175,14 @@ export default function DrawerMenu() {
               Batal
             </Button>
           </DrawerClose>
-          <Button className="rounded-xl bg-blue-500 text-white w-full hover:bg-blue-700">
-            Simpan
-          </Button>
+          <DrawerClose asChild>
+            <Button
+              className="rounded-xl bg-blue-500 text-white w-full hover:bg-blue-700"
+              onClick={handleSave}
+            >
+              Simpan
+            </Button>
+          </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

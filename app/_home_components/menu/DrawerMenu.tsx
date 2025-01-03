@@ -9,6 +9,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { X } from "lucide-react";
 import Link from "next/link";
 
 // interface DrawerMenuBody{
@@ -25,7 +26,12 @@ export default function DrawerMenu() {
         </Button>
       </DrawerTrigger>
       <DrawerContent className="max-w-screen-sm mx-auto">
-        <DrawerHeader className="text-center">
+        <DrawerHeader className="text-center relative">
+          <DrawerClose asChild className="absolute left-4">
+            {/* <Button variant="ghost" className="p-0"> */}
+            <X className="h-8 w-8 text-blue-500 cursor-pointer" />
+            {/* </Button> */}
+          </DrawerClose>
           <DrawerTitle className="text-center capitalize">
             kelola voucher
           </DrawerTitle>
@@ -40,7 +46,7 @@ export default function DrawerMenu() {
         <DrawerFooter>
           <DrawerClose asChild>
             <Button
-              className="bg-blue-700 text-white capitalize font-semibold rounded-xl"
+              className="bg-blue-700 text-white capitalize font-semibold rounded-xl hover:bg-blue-800"
               asChild
             >
               <Link href="/voucherPenjual/aktif">ke daftar voucher</Link>

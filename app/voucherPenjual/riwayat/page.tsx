@@ -1,5 +1,5 @@
 import { FolderX, Search } from "lucide-react";
-import DrawerMenu from "../_components/DrawerMenu";
+// import DrawerMenu from "../_components/DrawerMenu";
 
 export default function page() {
   return (
@@ -16,9 +16,7 @@ export default function page() {
           />
         </div>
       </form>
-      <div>
-        <DrawerMenu />
-      </div>
+      <div>{/* <DrawerMenu /> */}</div>
       <div className="min-h-[600px] bg-gray-100 flex justify-center items-center">
         <div className="text-center">
           <FolderX className="w-28 h-28 mx-auto" />

@@ -130,5 +130,6 @@ export const CreateVoucherSchema = z.object({
     target_produk: z.enum(["semua_produk", "produk_tertentu"], {
       required_error: "Target produk tidak boleh kosong",
     }),
+    gambar_produk: z.string().optional(),
   }),
 });
