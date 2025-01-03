@@ -71,7 +71,7 @@ export default function Page() {
   }
   return (
     <section className="max-w-screen-sm min-h-screen mx-auto">
-      <Nav />
+      <Nav step={currentStep} />
       <div className="px-2 py-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
