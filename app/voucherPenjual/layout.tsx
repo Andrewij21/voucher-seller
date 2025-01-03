@@ -1,5 +1,6 @@
 import BottomBar from "@/components/BottomBar";
 import Nav from "./_components/Nav";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -10,6 +11,7 @@ export default function RootLayout({
     <section className="max-w-screen-sm min-h-screen mx-auto relative">
       <Nav />
       <div className="px-2">{children}</div>
+      <Toaster />
       <BottomBar />
     </section>
   );
