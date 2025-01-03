@@ -208,14 +208,14 @@ export default function Second({
         <Button
           // type="submit"
           onClick={prev}
-          className="bg-white text-blue-500 w-full border-blue-500 border hover:bg-slate-200 rounded-xl"
+          className="bg-white text-blue-500 w-full border-blue-500 border hover:bg-slate-200 rounded-full"
         >
           Sebelumnya
         </Button>
         <Button
           // type="submit"
           onClick={next}
-          className="rounded-xl bg-blue-500 text-white w-full hover:bg-blue-700"
+          className="rounded-full bg-blue-500 text-white w-full hover:bg-blue-700"
         >
           Selanjutnya
         </Button>
