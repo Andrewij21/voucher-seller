@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Ticket } from "lucide-react";
+import DrawerMore from "./DrawerMore";
 
 interface VoucherCardBody {
   id: number;
@@ -29,8 +30,11 @@ interface VoucherCardBody {
 
 export default function VoucherCard({ data }: { data: VoucherCardBody }) {
   return (
-    <Card className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow-md space-y-2">
+    <Card className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow-md space-y-2 relative">
       {/* Header */}
+      <div className="absolute top-4 right-2">
+        <DrawerMore />
+      </div>
       <CardHeader className="p-0 flex flex-row items-center space-x-4">
         <div className="flex-shrink-0 rounded-lg bg-blue-100 p-2 items-center justify-center">
           <Ticket className="w-16 h-16" />
