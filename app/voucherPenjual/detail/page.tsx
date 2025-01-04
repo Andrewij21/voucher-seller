@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <Nav step={currentStep} />
-      <div className="px-2 py-4">
+      <div className="">
         {currentStep === 1 && <InformasiVoucher next={next} />}
         {currentStep === 2 && <DaftarPesanan prev={prev} />}
       </div>
